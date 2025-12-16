@@ -1,15 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// 1. Importamos TODAS las vistas
+// Importamos TODAS las vistas que hemos creado
 import HomeView from '../views/HomeView.vue'
 import MenuDelivery from '../views/MenuDelivery.vue'
-import TermsView from '../views/TermsView.vue'
-import PrivacyView from '../views/PrivacyView.vue'
-import ContactoView from '../views/ContactoView.vue'
 import CateringView from '../views/CateringView.vue'
 import OfertasView from '../views/OfertasView.vue'
+import ContactoView from '../views/ContactoView.vue'
+import TermsView from '../views/TermsView.vue'
+import PrivacyView from '../views/PrivacyView.vue'
 
 const router = createRouter({
+  // Esto lee la base '/Ukiyo_Web/' de vite.config.ts automáticamente
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -25,12 +26,12 @@ const router = createRouter({
     {
       path: '/catering',
       name: 'catering',
-      component: CateringView // <--- Ahora sí funcionará la pestaña Catering
+      component: CateringView
     },
     {
       path: '/ofertas',
       name: 'ofertas',
-      component: OfertasView // <--- Ahora funcionará la pestaña Ofertas
+      component: OfertasView
     },
     {
       path: '/contacto',
