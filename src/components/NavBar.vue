@@ -1,6 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { RouterLink } from 'vue-router'; // Importante para usar los enlaces
+import { RouterLink } from 'vue-router'; // Importar RouterLink para que funcione el HTML
+
+// --- SOLUCIÓN IMAGEN ---
+// Importamos la imagen explícitamente para que Vite la procese bien al compilar
+import logoImg from '@/assets/logo.png';
 
 const isMenuOpen = ref(false);
 const isDarkMode = ref(false);
@@ -56,7 +60,8 @@ onUnmounted(() => {
         <!-- LOGO -->
         <RouterLink to="/" class="flex items-center gap-2 group no-underline" @click="isMenuOpen = false">
           <div class="h-12 w-auto flex items-center">
-             <img src="@/assets/logo.png" alt="Logo Ukiyo" class="h-full w-auto object-contain" />
+             <!-- CAMBIO AQUÍ: Usamos :src con la variable importada -->
+             <img :src="logoImg" alt="Logo Ukiyo" class="h-full w-auto object-contain" />
           </div>
           <span class="font-bold text-2xl tracking-widest flex flex-col leading-none text-gray-900 dark:text-white">
             UKIYO
@@ -67,14 +72,9 @@ onUnmounted(() => {
         <!-- ENLACES ESCRITORIO -->
         <div class="hidden md:flex space-x-8 items-center">
           <RouterLink to="/" class="text-gray-900 dark:text-gray-100 font-medium hover:text-ukiyo-gold dark:hover:text-ukiyo-gold transition-colors duration-200">Inicio</RouterLink>
-
-          <!-- AQUÍ ESTÁ EL ENLACE AL MENÚ -->
           <RouterLink to="/delivery" class="text-gray-900 dark:text-gray-100 font-medium hover:text-ukiyo-gold dark:hover:text-ukiyo-gold transition-colors duration-200">Menú</RouterLink>
-
           <RouterLink to="/ofertas" class="text-gray-900 dark:text-gray-100 font-medium hover:text-ukiyo-gold dark:hover:text-ukiyo-gold transition-colors duration-200">Ofertas</RouterLink>
-
           <RouterLink to="/catering" class="text-ukiyo-gold font-bold border-b-2 border-ukiyo-gold">Catering</RouterLink>
-
           <RouterLink to="/contacto" class="text-gray-900 dark:text-gray-100 font-medium hover:text-ukiyo-gold dark:hover:text-ukiyo-gold transition-colors duration-200">Contacto</RouterLink>
         </div>
 
